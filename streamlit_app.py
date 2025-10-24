@@ -363,3 +363,12 @@ def show_detailed_parameter_optimization(results):
 
 if __name__ == "__main__":
     main()
+# Add to streamlit_app.py
+@st.cache_resource
+def load_ai_system():
+    """Cache the AI system to avoid reloading"""
+    from main import AIMachiningSystem
+    return AIMachiningSystem()
+
+# Usage
+system = load_ai_system()
