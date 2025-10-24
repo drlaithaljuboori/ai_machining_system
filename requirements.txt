@@ -34,3 +34,5 @@ pytest>=6.0.0
 coverage>=5.0.0
 black>=22.0.0
 flake8>=4.0.0
+
+streamlit>=1.28.0
