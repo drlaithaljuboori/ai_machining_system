@@ -1,10 +1,18 @@
+# requirements.txt - CPU-only version for Railway
 fastapi==0.104.1
 uvicorn==0.24.0
 python-multipart==0.0.6
-torch==2.1.2
-torchvision==0.16.2
-torchaudio==2.1.2
+
+# PyTorch CPU-only (smaller, faster installation)
+torch==2.1.2+cpu
+torchvision==0.16.2+cpu
+torchaudio==2.1.2+cpu
 --extra-index-url https://download.pytorch.org/whl/cpu
-trimesh==3.23.5
+
+# 3D Processing (lightweight)
+trimesh==4.2.3
 numpy==1.24.3
-python-dotenv==1.0.0
+scipy==1.13.1
+
+# Optional: Try installing Kaolin from source if needed
+# git+https://github.com/NVIDIAGameWorks/kaolin.git@v0.15.0
