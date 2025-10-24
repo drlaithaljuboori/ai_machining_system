@@ -1,0 +1,662 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "description": "AI Machining System - Material Properties Database",
+    "last_updated": "2024-01-15",
+    "units": "metric",
+    "source": "Machinery's Handbook & Industrial Data"
+  },
+
+  "aluminum_alloys": {
+    "6061": {
+      "name": "Aluminum 6061-T6",
+      "category": "aluminum_alloy",
+      "common_name": "Structural Aluminum",
+      "hardness_hb": 95,
+      "tensile_strength_mpa": 310,
+      "yield_strength_mpa": 276,
+      "elongation_percent": 12,
+      "density_g_cm3": 2.70,
+      "thermal_conductivity_w_mk": 167,
+      "thermal_expansion_um_mk": 23.6,
+      "specific_cutting_force_n_mm2": 800,
+      "machinability_rating": "Excellent",
+      "machinability_index": 100,
+      "chip_formation": "Continuous",
+      "recommended_cutting_fluid": "Soluble Oil",
+      "tool_wear_characteristics": "Low",
+      "surface_finish_potential": "Excellent",
+      "recommended_sfm": {
+        "roughing": 800,
+        "semi_finishing": 1000,
+        "finishing": 1200,
+        "high_speed_machining": 1500
+      },
+      "recommended_fpt": {
+        "roughing": 0.20,
+        "semi_finishing": 0.15,
+        "finishing": 0.08,
+        "high_speed_machining": 0.05
+      },
+      "recommended_doc": {
+        "roughing_axial": 1.5,
+        "roughing_radial": 0.8,
+        "finishing_axial": 0.5,
+        "finishing_radial": 0.3
+      },
+      "preferred_tool_materials": ["Solid Carbide", "Uncoated Carbide"],
+      "preferred_tool_coatings": ["TiN", "Uncoated"],
+      "recommended_helix_angle": 40,
+      "recommended_rake_angle": 15,
+      "typical_applications": ["Aerospace", "Automotive", "Structural", "Consumer Goods"],
+      "notes": "Excellent machinability, good strength-to-weight ratio"
+    },
+
+    "7075": {
+      "name": "Aluminum 7075-T6",
+      "category": "aluminum_alloy",
+      "common_name": "Aerospace Aluminum",
+      "hardness_hb": 150,
+      "tensile_strength_mpa": 572,
+      "yield_strength_mpa": 503,
+      "elongation_percent": 11,
+      "density_g_cm3": 2.81,
+      "thermal_conductivity_w_mk": 130,
+      "thermal_expansion_um_mk": 23.4,
+      "specific_cutting_force_n_mm2": 900,
+      "machinability_rating": "Very Good",
+      "machinability_index": 90,
+      "chip_formation": "Continuous",
+      "recommended_cutting_fluid": "Soluble Oil",
+      "tool_wear_characteristics": "Low-Medium",
+      "surface_finish_potential": "Very Good",
+      "recommended_sfm": {
+        "roughing": 700,
+        "semi_finishing": 900,
+        "finishing": 1100,
+        "high_speed_machining": 1300
+      },
+      "recommended_fpt": {
+        "roughing": 0.18,
+        "semi_finishing": 0.12,
+        "finishing": 0.06,
+        "high_speed_machining": 0.04
+      },
+      "recommended_doc": {
+        "roughing_axial": 1.2,
+        "roughing_radial": 0.7,
+        "finishing_axial": 0.4,
+        "finishing_radial": 0.25
+      },
+      "preferred_tool_materials": ["Solid Carbide"],
+      "preferred_tool_coatings": ["TiN", "TiAlN"],
+      "recommended_helix_angle": 35,
+      "recommended_rake_angle": 12,
+      "typical_applications": ["Aerospace", "Military", "High-Stress Components"],
+      "notes": "High strength, good fatigue resistance"
+    },
+
+    "2024": {
+      "name": "Aluminum 2024-T3",
+      "category": "aluminum_alloy",
+      "common_name": "Aircraft Aluminum",
+      "hardness_hb": 120,
+      "tensile_strength_mpa": 469,
+      "yield_strength_mpa": 324,
+      "elongation_percent": 10,
+      "density_g_cm3": 2.78,
+      "thermal_conductivity_w_mk": 121,
+      "thermal_expansion_um_mk": 23.2,
+      "specific_cutting_force_n_mm2": 850,
+      "machinability_rating": "Good",
+      "machinability_index": 80,
+      "chip_formation": "Continuous",
+      "recommended_cutting_fluid": "Soluble Oil",
+      "tool_wear_characteristics": "Medium",
+      "surface_finish_potential": "Good",
+      "recommended_sfm": {
+        "roughing": 600,
+        "semi_finishing": 800,
+        "finishing": 1000,
+        "high_speed_machining": 1200
+      },
+      "recommended_fpt": {
+        "roughing": 0.15,
+        "semi_finishing": 0.10,
+        "finishing": 0.05,
+        "high_speed_machining": 0.03
+      },
+      "recommended_doc": {
+        "roughing_axial": 1.0,
+        "roughing_radial": 0.6,
+        "finishing_axial": 0.3,
+        "finishing_radial": 0.2
+      },
+      "preferred_tool_materials": ["Solid Carbide"],
+      "preferred_tool_coatings": ["TiN", "TiAlN"],
+      "recommended_helix_angle": 35,
+      "recommended_rake_angle": 10,
+      "typical_applications": ["Aircraft Structures", "Truck Wheels", "Structural Components"],
+      "notes": "Good fatigue resistance, lower corrosion resistance"
+    }
+  },
+
+  "steels": {
+    "1045": {
+      "name": "Steel 1045",
+      "category": "carbon_steel",
+      "common_name": "Medium Carbon Steel",
+      "hardness_hb": 170,
+      "tensile_strength_mpa": 585,
+      "yield_strength_mpa": 505,
+      "elongation_percent": 12,
+      "density_g_cm3": 7.85,
+      "thermal_conductivity_w_mk": 51.9,
+      "thermal_expansion_um_mk": 11.7,
+      "specific_cutting_force_n_mm2": 2200,
+      "machinability_rating": "Good",
+      "machinability_index": 65,
+      "chip_formation": "Continuous to Segmented",
+      "recommended_cutting_fluid": "Emulsion or Oil",
+      "tool_wear_characteristics": "Medium",
+      "surface_finish_potential": "Good",
+      "recommended_sfm": {
+        "roughing": 300,
+        "semi_finishing": 350,
+        "finishing": 400,
+        "high_speed_machining": 500
+      },
+      "recommended_fpt": {
+        "roughing": 0.15,
+        "semi_finishing": 0.10,
+        "finishing": 0.08,
+        "high_speed_machining": 0.05
+      },
+      "recommended_doc": {
+        "roughing_axial": 2.0,
+        "roughing_radial": 1.0,
+        "finishing_axial": 0.5,
+        "finishing_radial": 0.3
+      },
+      "preferred_tool_materials": ["Coated Carbide", "Cermet"],
+      "preferred_tool_coatings": ["TiAlN", "TiCN", "AlTiN"],
+      "recommended_helix_angle": 30,
+      "recommended_rake_angle": 5,
+      "typical_applications": ["Shafts", "Gears", "Bolts", "Machine Parts"],
+      "notes": "Good strength and wear resistance, responds well to heat treatment"
+    },
+
+    "4140": {
+      "name": "Steel 4140",
+      "category": "alloy_steel",
+      "common_name": "Chromium-Molybdenum Steel",
+      "hardness_hb": 197,
+      "tensile_strength_mpa": 655,
+      "yield_strength_mpa": 415,
+      "elongation_percent": 25.7,
+      "density_g_cm3": 7.85,
+      "thermal_conductivity_w_mk": 42.6,
+      "thermal_expansion_um_mk": 12.3,
+      "specific_cutting_force_n_mm2": 2400,
+      "machinability_rating": "Medium",
+      "machinability_index": 55,
+      "chip_formation": "Continuous",
+      "recommended_cutting_fluid": "Emulsion or Oil",
+      "tool_wear_characteristics": "Medium-High",
+      "surface_finish_potential": "Good",
+      "recommended_sfm": {
+        "roughing": 250,
+        "semi_finishing": 300,
+        "finishing": 350,
+        "high_speed_machining": 400
+      },
+      "recommended_fpt": {
+        "roughing": 0.12,
+        "semi_finishing": 0.08,
+        "finishing": 0.06,
+        "high_speed_machining": 0.04
+      },
+      "recommended_doc": {
+        "roughing_axial": 1.5,
+        "roughing_radial": 0.8,
+        "finishing_axial": 0.4,
+        "finishing_radial": 0.25
+      },
+      "preferred_tool_materials": ["Coated Carbide", "Cermet"],
+      "preferred_tool_coatings": ["TiAlN", "AlTiN", "TiCN"],
+      "recommended_helix_angle": 30,
+      "recommended_rake_angle": 5,
+      "typical_applications": ["Gears", "Shafts", "Bolts", "Machine Parts"],
+      "notes": "Good toughness and fatigue strength, responds well to heat treatment"
+    },
+
+    "4340": {
+      "name": "Steel 4340",
+      "category": "alloy_steel",
+      "common_name": "Nickel-Chromium-Molybdenum Steel",
+      "hardness_hb": 217,
+      "tensile_strength_mpa": 745,
+      "yield_strength_mpa": 470,
+      "elongation_percent": 22,
+      "density_g_cm3": 7.85,
+      "thermal_conductivity_w_mk": 44.5,
+      "thermal_expansion_um_mk": 12.3,
+      "specific_cutting_force_n_mm2": 2600,
+      "machinability_rating": "Medium",
+      "machinability_index": 50,
+      "chip_formation": "Continuous",
+      "recommended_cutting_fluid": "Emulsion or Oil",
+      "tool_wear_characteristics": "High",
+      "surface_finish_potential": "Good",
+      "recommended_sfm": {
+        "roughing": 200,
+        "semi_finishing": 250,
+        "finishing": 300,
+        "high_speed_machining": 350
+      },
+      "recommended_fpt": {
+        "roughing": 0.10,
+        "semi_finishing": 0.07,
+        "finishing": 0.05,
+        "high_speed_machining": 0.03
+      },
+      "recommended_doc": {
+        "roughing_axial": 1.2,
+        "roughing_radial": 0.6,
+        "finishing_axial": 0.3,
+        "finishing_radial": 0.2
+      },
+      "preferred_tool_materials": ["Coated Carbide", "Cermet"],
+      "preferred_tool_coatings": ["AlTiN", "TiAlN", "TiCN"],
+      "recommended_helix_angle": 25,
+      "recommended_rake_angle": 3,
+      "typical_applications": ["Aircraft Landing Gear", "Crankshafts", "High-Stress Parts"],
+      "notes": "High strength and toughness, excellent fatigue resistance"
+    },
+
+    "tool_steel_d2": {
+      "name": "Tool Steel D2",
+      "category": "tool_steel",
+      "common_name": "Air-Hardening Die Steel",
+      "hardness_hb": 250,
+      "tensile_strength_mpa": 860,
+      "yield_strength_mpa": 690,
+      "elongation_percent": 5,
+      "density_g_cm3": 7.70,
+      "thermal_conductivity_w_mk": 20.0,
+      "thermal_expansion_um_mk": 10.4,
+      "specific_cutting_force_n_mm2": 3000,
+      "machinability_rating": "Difficult",
+      "machinability_index": 25,
+      "chip_formation": "Segmented",
+      "recommended_cutting_fluid": "Oil or Synthetic",
+      "tool_wear_characteristics": "Very High",
+      "surface_finish_potential": "Fair",
+      "recommended_sfm": {
+        "roughing": 120,
+        "semi_finishing": 150,
+        "finishing": 180,
+        "high_speed_machining": 200
+      },
+      "recommended_fpt": {
+        "roughing": 0.08,
+        "semi_finishing": 0.05,
+        "finishing": 0.03,
+        "high_speed_machining": 0.02
+      },
+      "recommended_doc": {
+        "roughing_axial": 0.8,
+        "roughing_radial": 0.4,
+        "finishing_axial": 0.2,
+        "finishing_radial": 0.15
+      },
+      "preferred_tool_materials": ["CBN", "Ceramic", "Coated Carbide"],
+      "preferred_tool_coatings": ["AlTiN", "Diamond", "TiAlN"],
+      "recommended_helix_angle": 20,
+      "recommended_rake_angle": 0,
+      "typical_applications": ["Dies", "Molds", "Cutting Tools", "Wear Parts"],
+      "notes": "High wear resistance, poor machinability in hardened state"
+    }
+  },
+
+  "stainless_steels": {
+    "304": {
+      "name": "Stainless Steel 304",
+      "category": "austenitic_stainless",
+      "common_name": "18-8 Stainless Steel",
+      "hardness_hb": 170,
+      "tensile_strength_mpa": 515,
+      "yield_strength_mpa": 205,
+      "elongation_percent": 40,
+      "density_g_cm3": 8.00,
+      "thermal_conductivity_w_mk": 16.2,
+      "thermal_expansion_um_mk": 17.2,
+      "specific_cutting_force_n_mm2": 2800,
+      "machinability_rating": "Fair",
+      "machinability_index": 45,
+      "chip_formation": "Stringy, Continuous",
+      "recommended_cutting_fluid": "Synthetic or Emulsion",
+      "tool_wear_characteristics": "High",
+      "surface_finish_potential": "Good",
+      "recommended_sfm": {
+        "roughing": 200,
+        "semi_finishing": 250,
+        "finishing": 300,
+        "high_speed_machining": 350
+      },
+      "recommended_fpt": {
+        "roughing": 0.12,
+        "semi_finishing": 0.08,
+        "finishing": 0.06,
+        "high_speed_machining": 0.04
+      },
+      "recommended_doc": {
+        "roughing_axial": 1.5,
+        "roughing_radial": 0.8,
+        "finishing_axial": 0.4,
+        "finishing_radial": 0.25
+      },
+      "preferred_tool_materials": ["Coated Carbide", "Cermet"],
+      "preferred_tool_coatings": ["TiAlN", "TiCN", "AlTiN"],
+      "recommended_helix_angle": 35,
+      "recommended_rake_angle": 8,
+      "typical_applications": ["Food Processing", "Chemical Equipment", "Architectural"],
+      "notes": "Good corrosion resistance, work hardens rapidly"
+    },
+
+    "316": {
+      "name": "Stainless Steel 316",
+      "category": "austenitic_stainless",
+      "common_name": "Marine Grade Stainless",
+      "hardness_hb": 170,
+      "tensile_strength_mpa": 515,
+      "yield_strength_mpa": 205,
+      "elongation_percent": 40,
+      "density_g_cm3": 8.00,
+      "thermal_conductivity_w_mk": 16.2,
+      "thermal_expansion_um_mk": 16.0,
+      "specific_cutting_force_n_mm2": 2900,
+      "machinability_rating": "Fair",
+      "machinability_index": 40,
+      "chip_formation": "Stringy, Continuous",
+      "recommended_cutting_fluid": "Synthetic or Emulsion",
+      "tool_wear_characteristics": "High",
+      "surface_finish_potential": "Good",
+      "recommended_sfm": {
+        "roughing": 180,
+        "semi_finishing": 220,
+        "finishing": 280,
+        "high_speed_machining": 320
+      },
+      "recommended_fpt": {
+        "roughing": 0.10,
+        "semi_finishing": 0.07,
+        "finishing": 0.05,
+        "high_speed_machining": 0.03
+      },
+      "recommended_doc": {
+        "roughing_axial": 1.2,
+        "roughing_radial": 0.6,
+        "finishing_axial": 0.3,
+        "finishing_radial": 0.2
+      },
+      "preferred_tool_materials": ["Coated Carbide", "Cermet"],
+      "preferred_tool_coatings": ["TiAlN", "TiCN", "AlTiN"],
+      "recommended_helix_angle": 35,
+      "recommended_rake_angle": 8,
+      "typical_applications": ["Marine Environments", "Chemical Processing", "Medical"],
+      "notes": "Excellent corrosion resistance, more difficult to machine than 304"
+    },
+
+    "17-4ph": {
+      "name": "Stainless Steel 17-4PH",
+      "category": "precipitation_hardening_stainless",
+      "common_name": "Precipitation Hardening Stainless",
+      "hardness_hb": 363,
+      "tensile_strength_mpa": 1103,
+      "yield_strength_mpa": 1000,
+      "elongation_percent": 10,
+      "density_g_cm3": 7.80,
+      "thermal_conductivity_w_mk": 18.4,
+      "thermal_expansion_um_mk": 10.8,
+      "specific_cutting_force_n_mm2": 3200,
+      "machinability_rating": "Difficult",
+      "machinability_index": 30,
+      "chip_formation": "Segmented",
+      "recommended_cutting_fluid": "Synthetic or Oil",
+      "tool_wear_characteristics": "Very High",
+      "surface_finish_potential": "Fair",
+      "recommended_sfm": {
+        "roughing": 120,
+        "semi_finishing": 150,
+        "finishing": 180,
+        "high_speed_machining": 200
+      },
+      "recommended_fpt": {
+        "roughing": 0.08,
+        "semi_finishing": 0.05,
+        "finishing": 0.03,
+        "high_speed_machining": 0.02
+      },
+      "recommended_doc": {
+        "roughing_axial": 1.0,
+        "roughing_radial": 0.5,
+        "finishing_axial": 0.25,
+        "finishing_radial": 0.15
+      },
+      "preferred_tool_materials": ["Coated Carbide", "Cermet"],
+      "preferred_tool_coatings": ["AlTiN", "TiAlN", "TiCN"],
+      "recommended_helix_angle": 30,
+      "recommended_rake_angle": 5,
+      "typical_applications": ["Aerospace", "Nuclear", "Chemical", "Shafts"],
+      "notes": "High strength, good corrosion resistance, difficult to machine"
+    }
+  },
+
+  "titanium_alloys": {
+    "ti6al4v": {
+      "name": "Titanium Ti-6Al-4V",
+      "category": "titanium_alloy",
+      "common_name": "Grade 5 Titanium",
+      "hardness_hb": 334,
+      "tensile_strength_mpa": 950,
+      "yield_strength_mpa": 880,
+      "elongation_percent": 14,
+      "density_g_cm3": 4.43,
+      "thermal_conductivity_w_mk": 6.7,
+      "thermal_expansion_um_mk": 8.6,
+      "specific_cutting_force_n_mm2": 3500,
+      "machinability_rating": "Difficult",
+      "machinability_index": 20,
+      "chip_formation": "Segmented",
+      "recommended_cutting_fluid": "Synthetic or Oil",
+      "tool_wear_characteristics": "Very High",
+      "surface_finish_potential": "Fair",
+      "recommended_sfm": {
+        "roughing": 150,
+        "semi_finishing": 180,
+        "finishing": 200,
+        "high_speed_machining": 250
+      },
+      "recommended_fpt": {
+        "roughing": 0.08,
+        "semi_finishing": 0.05,
+        "finishing": 0.03,
+        "high_speed_machining": 0.02
+      },
+      "recommended_doc": {
+        "roughing_axial": 1.0,
+        "roughing_radial": 0.5,
+        "finishing_axial": 0.25,
+        "finishing_radial": 0.15
+      },
+      "preferred_tool_materials": ["Coated Carbide", "Cermet"],
+      "preferred_tool_coatings": ["AlTiN", "TiAlN", "Diamond"],
+      "recommended_helix_angle": 35,
+      "recommended_rake_angle": 5,
+      "typical_applications": ["Aerospace", "Medical Implants", "Marine", "Chemical"],
+      "notes": "Low thermal conductivity causes heat concentration at cutting edge"
+    },
+
+    "cp_titanium": {
+      "name": "Commercially Pure Titanium",
+      "category": "titanium",
+      "common_name": "CP Titanium Grade 2",
+      "hardness_hb": 180,
+      "tensile_strength_mpa": 345,
+      "yield_strength_mpa": 275,
+      "elongation_percent": 20,
+      "density_g_cm3": 4.51,
+      "thermal_conductivity_w_mk": 16.4,
+      "thermal_expansion_um_mk": 8.9,
+      "specific_cutting_force_n_mm2": 2800,
+      "machinability_rating": "Fair",
+      "machinability_index": 35,
+      "chip_formation": "Continuous",
+      "recommended_cutting_fluid": "Synthetic or Oil",
+      "tool_wear_characteristics": "High",
+      "surface_finish_potential": "Good",
+      "recommended_sfm": {
+        "roughing": 180,
+        "semi_finishing": 220,
+        "finishing": 250,
+        "high_speed_machining": 300
+      },
+      "recommended_fpt": {
+        "roughing": 0.10,
+        "semi_finishing": 0.07,
+        "finishing": 0.05,
+        "high_speed_machining": 0.03
+      },
+      "recommended_doc": {
+        "roughing_axial": 1.2,
+        "roughing_radial": 0.6,
+        "finishing_axial": 0.3,
+        "finishing_radial": 0.2
+      },
+      "preferred_tool_materials": ["Coated Carbide"],
+      "preferred_tool_coatings": ["TiAlN", "AlTiN"],
+      "recommended_helix_angle": 35,
+      "recommended_rake_angle": 8,
+      "typical_applications": ["Chemical Processing", "Marine", "Medical", "Aerospace"],
+      "notes": "Better machinability than Ti-6Al-4V, but still challenging"
+    }
+  },
+
+  "high_temperature_alloys": {
+    "inconel_718": {
+      "name": "Inconel 718",
+      "category": "nickel_alloy",
+      "common_name": "Superalloy",
+      "hardness_hb": 330,
+      "tensile_strength_mpa": 1240,
+      "yield_strength_mpa": 1030,
+      "elongation_percent": 12,
+      "density_g_cm3": 8.19,
+      "thermal_conductivity_w_mk": 11.4,
+      "thermal_expansion_um_mk": 13.0,
+      "specific_cutting_force_n_mm2": 4000,
+      "machinability_rating": "Very Difficult",
+      "machinability_index": 10,
+      "chip_formation": "Segmented",
+      "recommended_cutting_fluid": "Synthetic or Oil",
+      "tool_wear_characteristics": "Extreme",
+      "surface_finish_potential": "Poor",
+      "recommended_sfm": {
+        "roughing": 80,
+        "semi_finishing": 100,
+        "finishing": 120,
+        "high_speed_machining": 150
+      },
+      "recommended_fpt": {
+        "roughing": 0.06,
+        "semi_finishing": 0.04,
+        "finishing": 0.02,
+        "high_speed_machining": 0.015
+      },
+      "recommended_doc": {
+        "roughing_axial": 0.8,
+        "roughing_radial": 0.4,
+        "finishing_axial": 0.2,
+        "finishing_radial": 0.1
+      },
+      "preferred_tool_materials": ["CBN", "Ceramic", "Coated Carbide"],
+      "preferred_tool_coatings": ["AlTiN", "Diamond", "Special Coatings"],
+      "recommended_helix_angle": 30,
+      "recommended_rake_angle": 0,
+      "typical_applications": ["Aerospace Turbines", "Nuclear Reactors", "High-Temperature Parts"],
+      "notes": "Extremely difficult to machine, requires specialized tools and techniques"
+    }
+  },
+
+  "material_selection_rules": {
+    "machining_difficulty_categories": {
+      "easy": {
+        "range": [80, 100],
+        "materials": ["Aluminum 6061", "Aluminum 7075", "Free Machining Steel"],
+        "recommended_approach": "Aggressive parameters, high speeds"
+      },
+      "medium": {
+        "range": [40, 80],
+        "materials": ["Steel 1045", "Steel 4140", "Stainless 304"],
+        "recommended_approach": "Balanced parameters, moderate speeds"
+      },
+      "difficult": {
+        "range": [20, 40],
+        "materials": ["Tool Steel D2", "Stainless 17-4PH", "Titanium Ti-6Al-4V"],
+        "recommended_approach": "Conservative parameters, lower speeds"
+      },
+      "very_difficult": {
+        "range": [0, 20],
+        "materials": ["Inconel 718", "Hardened Steels", "Ceramics"],
+        "recommended_approach": "Specialized tools, very conservative parameters"
+      }
+    },
+
+    "thermal_property_considerations": {
+      "high_conductivity": {
+        "materials": ["Aluminum Alloys", "Copper Alloys"],
+        "effect": "Heat dissipates quickly from cutting zone",
+        "recommendation": "Higher speeds possible, less coolant needed"
+      },
+      "low_conductivity": {
+        "materials": ["Titanium Alloys", "Nickel Alloys", "Stainless Steels"],
+        "effect": "Heat concentrates at cutting edge",
+        "recommendation": "Lower speeds, high-pressure coolant, sharp tools"
+      }
+    },
+
+    "work_hardening_materials": {
+      "high_tendency": ["Stainless Steels", "Nickel Alloys", "Austenitic Manganese Steel"],
+      "recommendations": [
+        "Use sharp tools with positive rake",
+        "Maintain constant feed rate",
+        "Avoid dwelling or interrupted cuts",
+        "Use higher feed rates to get under work-hardened layer"
+      ]
+    },
+
+    "material_specific_tips": {
+      "aluminum": [
+        "Use sharp tools with high helix angles",
+        "Consider high-speed machining techniques",
+        "Watch for built-up edge with uncoated tools"
+      ],
+      "stainless_steel": [
+        "Use rigid setups to prevent chatter",
+        "Maintain constant feed to prevent work hardening",
+        "Consider using high-pressure coolant"
+      ],
+      "titanium": [
+        "Use sharp tools with adequate clearance",
+        "Maintain constant feed to prevent work hardening",
+        "Consider trochoidal milling for difficult features"
+      ],
+      "high_temperature_alloys": [
+        "Use specialized tool geometries",
+        "Consider CBN or ceramic tools for hard turning",
+        "Use high-pressure coolant through spindle"
+      ]
+    }
+  }
+}
