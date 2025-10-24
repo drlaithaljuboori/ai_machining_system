@@ -1,374 +1,232 @@
 # streamlit_app.py
 import streamlit as st
+import numpy as np
+import trimesh
+import plotly.graph_objects as go
+from pathlib import Path
+import tempfile
 import sys
 import os
-from pathlib import Path
-
-# Add the project root to Python path
-project_root = Path(__file__).parent
-sys.path.append(str(project_root))
 
 # Set page config first
 st.set_page_config(
-    page_title="AI Machining Analysis System",
+    page_title="AI Machining Analysis",
     page_icon="⚙️",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
 def main():
-    # Main title
-    st.title("⚙️ AI-Powered Geometric Analysis & Machining System")
-    st.markdown("---")
+    st.title("⚙️ AI Machining Analysis System")
+    st.markdown("""
+    This system analyzes 3D CAD files and provides machining recommendations.
+    Upload your STL file to get started.
+    """)
     
-    # Sidebar for navigation
-    st.sidebar.title("Navigation")
-    app_mode = st.sidebar.selectbox(
-        "Choose the app mode",
-        ["Home", "CAD Analysis", "Curvature Classification", "Tool Selection", "Parameter Optimization"]
-    )
-    
-    # Initialize session state for results
-    if 'analysis_results' not in st.session_state:
-        st.session_state.analysis_results = None
-    
-    if app_mode == "Home":
-        show_home()
-    elif app_mode == "CAD Analysis":
-        show_cad_analysis()
-    elif app_mode == "Curvature Classification":
-        show_curvature_analysis()
-    elif app_mode == "Tool Selection":
-        show_tool_selection()
-    elif app_mode == "Parameter Optimization":
-        show_parameter_optimization()
-
-def show_home():
-    """Home page with overview and instructions"""
-    st.header("Welcome to AI Machining System")
-    
-    col1, col2 = st.columns([2, 1])
-    
-    with col1:
-        st.markdown("""
-        ### 🚀 System Overview
-        
-        This AI-powered system provides:
-        
-        - **3D Geometry Analysis** - Automatic CAD file processing
-        - **Curvature Classification** - AI-based surface analysis  
-        - **Intelligent Tool Selection** - Optimal tool recommendations
-        - **Parameter Optimization** - AI-optimized machining parameters
-        
-        ### 📁 Supported Formats
-        - STL, OBJ, STEP, IGES files
-        - All major CAD formats via conversion
-        """)
-    
-    with col2:
-        st.image("https://via.placeholder.com/300x200/4A90E2/FFFFFF?text=AI+Machining", 
-                caption="AI-Powered Manufacturing")
-        
-        st.info("""
-        **Quick Start:**
-        1. Upload CAD file
-        2. Set material & machine
-        3. Run analysis
-        4. Get optimized parameters
-        """)
-    
-    st.markdown("---")
-    st.subheader("Getting Started")
-    
-    # Quick analysis section
-    st.write("### 🎯 Quick Analysis")
-    
+    # File upload
     uploaded_file = st.file_uploader(
-        "Upload CAD File", 
-        type=['stl', 'obj', 'step', 'stp'],
-        help="Upload your 3D model file"
+        "Upload STL File", 
+        type=['stl'],
+        help="Upload a 3D STL file for analysis"
     )
     
     if uploaded_file is not None:
-        # Save uploaded file temporarily
-        temp_file = Path("temp_upload") / uploaded_file.name
-        temp_file.parent.mkdir(exist_ok=True)
-        
-        with open(temp_file, "wb") as f:
-            f.write(uploaded_file.getbuffer())
-        
-        st.success(f"✅ File uploaded: {uploaded_file.name}")
-        
-        # Quick analysis options
-        col1, col2, col3 = st.columns(3)
-        
-        with col1:
-            material = st.selectbox(
-                "Material",
-                ["Steel", "Aluminum", "Stainless Steel", "Titanium", "Other"]
-            )
-        
-        with col2:
-            machine_type = st.selectbox(
-                "Machine Type", 
-                ["3-Axis", "5-Axis", "High-Speed", "CNC Mill"]
-            )
-        
-        with col3:
-            objective = st.selectbox(
-                "Optimization Goal",
-                ["Balanced", "Maximum MRR", "Best Finish", "Tool Life"]
-            )
-        
-        if st.button("🚀 Run AI Analysis", type="primary"):
-            with st.spinner("AI is analyzing your geometry..."):
-                try:
-                    # Import and run analysis
-                    from main import AIMachiningSystem
-                    
-                    # Initialize system
-                    system = AIMachiningSystem()
-                    
-                    # Run analysis
-                    results = system.analyze_part(
-                        str(temp_file),
-                        material=material.lower(),
-                        machine_type=machine_type.lower()
-                    )
-                    
-                    # Store results in session state
-                    st.session_state.analysis_results = results
-                    
-                    st.success("✅ Analysis completed successfully!")
-                    st.balloons()
-                    
-                    # Show quick results
-                    show_quick_results(results)
-                    
-                except Exception as e:
-                    st.error(f"❌ Analysis failed: {str(e)}")
-                    st.info("💡 Make sure all dependencies are installed correctly.")
+        try:
+            # Save uploaded file temporarily
+            with tempfile.NamedTemporaryFile(delete=False, suffix='.stl') as tmp_file:
+                tmp_file.write(uploaded_file.getvalue())
+                tmp_path = tmp_file.name
+            
+            # Load and analyze mesh
+            with st.spinner("Analyzing 3D geometry..."):
+                mesh = trimesh.load_mesh(tmp_path)
+                
+                # Basic mesh analysis
+                vertices = mesh.vertices
+                faces = mesh.faces
+                
+                # Perform analysis
+                analysis_results = analyze_mesh_simple(mesh)
+                
+            # Display results
+            display_results(analysis_results, vertices, faces)
+            
+            # Clean up
+            os.unlink(tmp_path)
+            
+        except Exception as e:
+            st.error(f"Error processing file: {str(e)}")
+            st.info("Please ensure you uploaded a valid STL file.")
 
-def show_quick_results(results):
-    """Display quick analysis results"""
-    st.subheader("📊 Quick Results")
+def analyze_mesh_simple(mesh):
+    """Simple mesh analysis without Kaolin"""
+    results = {}
     
+    # Basic geometry properties
+    results['vertex_count'] = len(mesh.vertices)
+    results['face_count'] = len(mesh.faces)
+    results['volume'] = mesh.volume
+    results['surface_area'] = mesh.area
+    
+    # Bounding box
+    results['bounding_box'] = mesh.bounds
+    results['extents'] = mesh.extents
+    
+    # Simple curvature approximation
+    if hasattr(mesh, 'vertex_normals') and mesh.vertex_normals is not None:
+        # Use normal variation as simple curvature proxy
+        normals = mesh.vertex_normals
+        if len(normals) > 0:
+            # Calculate normal variation
+            curvature_approx = calculate_simple_curvature(normals)
+            results['curvature_approx'] = curvature_approx
+            
+            # Classify regions
+            flat_threshold = 0.1
+            high_curve_threshold = 0.3
+            
+            flat_regions = np.where(curvature_approx < flat_threshold)[0]
+            high_curvature = np.where(curvature_approx > high_curve_threshold)[0]
+            
+            results['flat_regions'] = flat_regions
+            results['high_curvature'] = high_curvature
+    
+    # Tool recommendations based on geometry
+    results['tool_recommendations'] = recommend_tools_simple(results)
+    
+    return results
+
+def calculate_simple_curvature(normals):
+    """Calculate simple curvature approximation from normals"""
+    # For each vertex, calculate average normal difference with neighbors
+    curvature = np.zeros(len(normals))
+    
+    # Simple approach: use normal variation as curvature proxy
+    for i in range(len(normals)):
+        if i < len(normals) - 1:
+            # Calculate dot product between consecutive normals
+            dot_product = np.dot(normals[i], normals[i+1])
+            curvature[i] = 1 - abs(dot_product)  # 0 = same direction, 1 = opposite
+    
+    return curvature
+
+def recommend_tools_simple(analysis):
+    """Simple tool recommendations based on geometry"""
+    tools = []
+    
+    # Roughing tools based on size
+    extents = analysis.get('extents', [1, 1, 1])
+    max_extent = max(extents)
+    
+    if max_extent > 100:  # Large part
+        tools.append({"operation": "roughing", "tool": "25mm Face Mill", "reason": "Large part size"})
+    elif max_extent > 50:  # Medium part
+        tools.append({"operation": "roughing", "tool": "16mm End Mill", "reason": "Medium part size"})
+    else:  # Small part
+        tools.append({"operation": "roughing", "tool": "10mm End Mill", "reason": "Small part size"})
+    
+    # Finishing tools based on curvature
+    high_curvature_count = len(analysis.get('high_curvature', []))
+    total_vertices = analysis.get('vertex_count', 1)
+    curvature_ratio = high_curvature_count / total_vertices
+    
+    if curvature_ratio > 0.3:
+        tools.append({"operation": "finishing", "tool": "6mm Ball Nose", "reason": "High curvature areas"})
+        tools.append({"operation": "finishing", "tool": "3mm Ball Nose", "reason": "Detailed features"})
+    elif curvature_ratio > 0.1:
+        tools.append({"operation": "finishing", "tool": "8mm Ball Nose", "reason": "Moderate curvature"})
+    else:
+        tools.append({"operation": "finishing", "tool": "10mm Flat End Mill", "reason": "Mostly flat surfaces"})
+    
+    return tools
+
+def display_results(results, vertices, faces):
+    """Display analysis results"""
+    st.success("✅ Analysis Complete!")
+    
+    # Basic metrics
     col1, col2, col3, col4 = st.columns(4)
     
     with col1:
-        if 'region_classification' in results:
-            regions = results['region_classification']
-            flat_count = len(regions.get('flat_regions', []))
-            st.metric("Flat Regions", f"{flat_count} vertices")
-    
+        st.metric("Vertices", f"{results['vertex_count']:,}")
     with col2:
-        if 'tool_recommendations' in results:
-            tools = results['tool_recommendations']
-            total_tools = sum(len(op['tools']) for op in tools.get('tool_sequence', []))
-            st.metric("Recommended Tools", total_tools)
-    
+        st.metric("Faces", f"{results['face_count']:,}")
     with col3:
-        if 'optimized_parameters' in results:
-            params = results['optimized_parameters']
-            operations = len(params.get('optimized_operations', {}))
-            st.metric("Operations", operations)
-    
+        st.metric("Volume", f"{results['volume']:.2f} mm³")
     with col4:
-        if 'optimized_parameters' in results:
-            summary = params.get('optimization_summary', {})
-            time = summary.get('estimated_machining_time', 'N/A')
-            st.metric("Est. Time (min)", time)
+        st.metric("Surface Area", f"{results['surface_area']:.2f} mm²")
     
-    # Navigation to detailed views
-    st.info("💡 Use the sidebar to view detailed analysis for each section.")
-
-def show_cad_analysis():
-    """CAD file analysis interface"""
-    st.header("📐 CAD Geometry Analysis")
+    # 3D Visualization
+    st.subheader("3D Model Visualization")
+    fig = create_simple_3d_plot(vertices, faces, results)
+    st.plotly_chart(fig, use_container_width=True)
     
-    if st.session_state.analysis_results:
-        results = st.session_state.analysis_results
-        show_detailed_geometry_analysis(results)
-    else:
-        st.warning("⚠️ Please upload a CAD file and run analysis from the Home page first.")
-        st.info("Navigate to **Home** to start analysis.")
-
-def show_curvature_analysis():
-    """Curvature analysis interface"""
-    st.header("📊 Curvature Classification")
+    # Tool Recommendations
+    st.subheader("Tool Recommendations")
+    tools = results.get('tool_recommendations', [])
     
-    if st.session_state.analysis_results:
-        results = st.session_state.analysis_results
-        show_detailed_curvature_analysis(results)
-    else:
-        st.warning("⚠️ Please upload a CAD file and run analysis from the Home page first.")
-
-def show_tool_selection():
-    """Tool selection interface"""
-    st.header("🔧 Tool Selection")
+    for tool in tools:
+        with st.expander(f"{tool['operation'].title()}: {tool['tool']}"):
+            st.write(f"**Reason:** {tool['reason']}")
     
-    if st.session_state.analysis_results:
-        results = st.session_state.analysis_results
-        show_detailed_tool_selection(results)
-    else:
-        st.warning("⚠️ Please upload a CAD file and run analysis from the Home page first.")
-
-def show_parameter_optimization():
-    """Parameter optimization interface"""
-    st.header("⚡ Parameter Optimization")
-    
-    if st.session_state.analysis_results:
-        results = st.session_state.analysis_results
-        show_detailed_parameter_optimization(results)
-    else:
-        st.warning("⚠️ Please upload a CAD file and run analysis from the Home page first.")
-
-def show_detailed_geometry_analysis(results):
-    """Show detailed geometry analysis"""
-    st.subheader("Geometry Properties")
-    
-    if 'mesh_data' in results:
-        mesh_data = results['mesh_data']
-        vertices = mesh_data.get('vertices', [])
-        faces = mesh_data.get('faces', [])
+    # Curvature Analysis
+    if 'curvature_approx' in results:
+        st.subheader("Curvature Analysis")
         
-        col1, col2, col3, col4 = st.columns(4)
+        col1, col2 = st.columns(2)
         
         with col1:
-            st.metric("Vertices", len(vertices) if hasattr(vertices, '__len__') else 'N/A')
-        with col2:
-            st.metric("Faces", len(faces) if hasattr(faces, '__len__') else 'N/A')
-        with col3:
-            st.metric("File Type", "3D Mesh")
-        with col4:
-            st.metric("Status", "Analyzed")
-    
-    # Show curvature visualization if available
-    if 'curvature_map' in results:
-        st.subheader("Curvature Visualization")
-        st.info("Curvature analysis completed. View in Curvature Classification section.")
-
-def show_detailed_curvature_analysis(results):
-    """Show detailed curvature analysis"""
-    st.subheader("Curvature Classification Results")
-    
-    if 'region_classification' in results:
-        regions = results['region_classification']
-        
-        # Create metrics for each region type
-        col1, col2, col3, col4 = st.columns(4)
-        
-        with col1:
-            flat_count = len(regions.get('flat_regions', []))
+            flat_count = len(results.get('flat_regions', []))
             st.metric("Flat Regions", flat_count)
         
         with col2:
-            convex_count = len(regions.get('convex_regions', []))
-            st.metric("Convex Regions", convex_count)
+            high_curve_count = len(results.get('high_curvature', []))
+            st.metric("High Curvature Regions", high_curve_count)
         
-        with col3:
-            concave_count = len(regions.get('concave_regions', []))
-            st.metric("Concave Regions", concave_count)
-        
-        with col4:
-            high_curve_count = len(regions.get('high_curvature', []))
-            st.metric("High Curvature", high_curve_count)
-        
-        # Show curvature statistics
-        if 'curvature_statistics' in regions:
-            stats = regions['curvature_statistics']
-            st.subheader("Curvature Statistics")
-            
-            col1, col2, col3, col4 = st.columns(4)
-            
-            with col1:
-                st.metric("Mean Curvature", f"{stats.get('mean_gaussian', 0):.4f}")
-            with col2:
-                st.metric("Std Dev", f"{stats.get('std_gaussian', 0):.4f}")
-            with col3:
-                st.metric("Min Curvature", f"{stats.get('min_curvature', 0):.4f}")
-            with col4:
-                st.metric("Max Curvature", f"{stats.get('max_curvature', 0):.4f}")
+        # Curvature distribution
+        curvature_data = results['curvature_approx']
+        st.write("Curvature Distribution:")
+        st.bar_chart(np.histogram(curvature_data, bins=20)[0])
 
-def show_detailed_tool_selection(results):
-    """Show detailed tool selection"""
-    st.subheader("Tool Recommendations")
+def create_simple_3d_plot(vertices, faces, results):
+    """Create a simple 3D plot without Kaolin"""
+    fig = go.Figure()
     
-    if 'tool_recommendations' in results:
-        tool_recs = results['tool_recommendations']
-        tool_sequence = tool_recs.get('tool_sequence', [])
-        
-        for i, operation in enumerate(tool_sequence):
-            with st.expander(f"Operation {i+1}: {operation['operation'].title()}", expanded=True):
-                st.write(f"**Strategy:** {operation.get('strategy', 'Standard').replace('_', ' ').title()}")
-                
-                # Display tools in a table
-                tools = operation.get('tools', [])
-                if tools:
-                    # Create a simple table
-                    for j, tool in enumerate(tools):
-                        col1, col2, col3, col4 = st.columns(4)
-                        with col1:
-                            st.write(f"**Tool {j+1}:** {tool.get('name', 'N/A')}")
-                        with col2:
-                            st.write(f"Diameter: {tool.get('diameter', 'N/A')}mm")
-                        with col3:
-                            st.write(f"Type: {tool.get('type', 'N/A').replace('_', ' ').title()}")
-                        with col4:
-                            st.write(f"Flutes: {tool.get('flutes', 'N/A')}")
-                        st.markdown("---")
-
-def show_detailed_parameter_optimization(results):
-    """Show detailed parameter optimization"""
-    st.subheader("Optimized Machining Parameters")
+    # Create mesh plot
+    x, y, z = vertices[:, 0], vertices[:, 1], vertices[:, 2]
+    i, j, k = faces[:, 0], faces[:, 1], faces[:, 2]
     
-    if 'optimized_parameters' in results:
-        optimized = results['optimized_parameters']
-        operations = optimized.get('optimized_operations', {})
-        
-        for op_name, tools in operations.items():
-            with st.expander(f"Operation: {op_name.title()}", expanded=True):
-                for tool_data in tools:
-                    tool_name = tool_data.get('tool', {}).get('name', 'Unknown Tool')
-                    st.write(f"**{tool_name}**")
-                    
-                    # Cutting parameters
-                    cutting_params = tool_data.get('cutting_parameters', {})
-                    col1, col2, col3, col4 = st.columns(4)
-                    
-                    with col1:
-                        st.metric("RPM", cutting_params.get('rpm', 'N/A'))
-                    with col2:
-                        st.metric("Feed Rate", f"{cutting_params.get('feed_rate', 'N/A')} mm/min")
-                    with col3:
-                        st.metric("Axial DOC", f"{cutting_params.get('axial_depth_of_cut', 'N/A')} mm")
-                    with col4:
-                        st.metric("Radial DOC", f"{cutting_params.get('radial_depth_of_cut', 'N/A')} mm")
-                    
-                    # Performance metrics
-                    metrics = tool_data.get('performance_metrics', {})
-                    col1, col2, col3, col4 = st.columns(4)
-                    
-                    with col1:
-                        st.metric("MRR", f"{metrics.get('material_removal_rate', 'N/A')} cm³/min")
-                    with col2:
-                        st.metric("Power", f"{metrics.get('cutting_power', 'N/A')} kW")
-                    with col3:
-                        st.metric("Tool Life", f"{metrics.get('estimated_tool_life', 'N/A')} min")
-                    with col4:
-                        roughness = metrics.get('estimated_surface_roughness', 'N/A')
-                        st.metric("Surface Roughness", f"{roughness} µm" if roughness != 'N/A' else 'N/A')
-                    
-                    st.markdown("---")
+    # Color by curvature if available
+    if 'curvature_approx' in results:
+        colors = results['curvature_approx']
+        colorscale = 'Viridis'
+    else:
+        colors = np.ones(len(vertices))
+        colorscale = 'Blues'
+    
+    mesh_plot = go.Mesh3d(
+        x=x, y=y, z=z,
+        i=i, j=j, k=k,
+        intensity=colors,
+        colorscale=colorscale,
+        opacity=0.7,
+        name="3D Model"
+    )
+    
+    fig.add_trace(mesh_plot)
+    
+    fig.update_layout(
+        scene=dict(
+            xaxis_title='X',
+            yaxis_title='Y', 
+            zaxis_title='Z',
+            aspectmode='data'
+        ),
+        height=500,
+        margin=dict(l=0, r=0, b=0, t=0)
+    )
+    
+    return fig
 
 if __name__ == "__main__":
     main()
-# Add to streamlit_app.py
-@st.cache_resource
-def load_ai_system():
-    """Cache the AI system to avoid reloading"""
-    from main import AIMachiningSystem
-    return AIMachiningSystem()
-
-# Usage
-system = load_ai_system()
