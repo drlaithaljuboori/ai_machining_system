@@ -1,25 +1,8 @@
-# requirements.txt - Updated for Python 3.13 and Streamlit Cloud
-torch==2.5.0+cpu
-torchvision==0.20.0+cpu
-torchaudio==2.5.0+cpu
---extra-index-url https://download.pytorch.org/whl/cpu
-
-# Lightweight 3D processing
-trimesh==4.2.3
-pyvista==0.44.1
-numpy==1.26.4
-scipy==1.13.1
-
-# Visualization
-plotly==5.22.0
-kaleido==0.2.1
-matplotlib==3.9.2
-
-# Streamlit & UI
-streamlit==1.39.0
-
-# Utilities
-Pillow==10.4.0
-Jinja2==3.1.4
-PyYAML==6.0.2
-openpyxl==3.1.5
+fastapi==0.104.1
+uvicorn==0.24.0
+python-multipart==0.0.6
+torch==2.0.1
+kaolin==0.15.0
+trimesh==3.23.5
+numpy==1.24.3
+python-dotenv==1.0.0
