@@ -46,3 +46,25 @@ results/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Kaolin and large dependencies
+kaolin/
+*.egg-info/
+build/
+dist/
+__pycache__/
+
+# CUDA and compiled extensions
+*.so
+*.cu
+*.cuh
+
+# Large data files
+*.pth
+*.pt
+*.h5
+*.npz
+
+# Cache directories
+.pytest_cache/
+.mypy_cache/
