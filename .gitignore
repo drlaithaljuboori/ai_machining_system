@@ -1,0 +1,48 @@
+# .gitignore
+
+# Kaolin and large dependencies (DO NOT UPLOAD)
+kaolin/
+*.egg-info/
+build/
+dist/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Data files (large)
+*.stl
+*.step
+*.stp
+*.igs
+*.obj
+*.ply
+
+# Machine learning models (large)
+*.pth
+*.pt
+*.h5
+*.keras
+
+# Logs and outputs
+logs/
+output/
+results/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
