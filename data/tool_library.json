@@ -1,0 +1,659 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "description": "AI Machining System - Tool Library Database",
+    "last_updated": "2024-01-15",
+    "units": "mm"
+  },
+  
+  "end_mills": {
+    "flat_end_mills": [
+      {
+        "id": "EM-F-001",
+        "name": "EM_1mm_Flat_2Flute",
+        "type": "flat_end_mill",
+        "diameter": 1.0,
+        "flute_length": 3.0,
+        "overall_length": 38.0,
+        "flutes": 2,
+        "shank_diameter": 3.0,
+        "corner_radius": 0.0,
+        "helix_angle": 30,
+        "coating": "TiN",
+        "material": "solid_carbide",
+        "application": ["finishing", "high_detail"],
+        "max_rpm": 30000,
+        "price_range": "medium",
+        "manufacturer": "Generic",
+        "description": "Ultra-fine flat end mill for high-detail work"
+      },
+      {
+        "id": "EM-F-002",
+        "name": "EM_3mm_Flat_4Flute",
+        "type": "flat_end_mill",
+        "diameter": 3.0,
+        "flute_length": 8.0,
+        "overall_length": 50.0,
+        "flutes": 4,
+        "shank_diameter": 6.0,
+        "corner_radius": 0.0,
+        "helix_angle": 45,
+        "coating": "TiAlN",
+        "material": "solid_carbide",
+        "application": ["semi_finishing", "slotting"],
+        "max_rpm": 20000,
+        "price_range": "low",
+        "manufacturer": "Generic",
+        "description": "General purpose flat end mill"
+      },
+      {
+        "id": "EM-F-003",
+        "name": "EM_6mm_Flat_4Flute",
+        "type": "flat_end_mill",
+        "diameter": 6.0,
+        "flute_length": 15.0,
+        "overall_length": 60.0,
+        "flutes": 4,
+        "shank_diameter": 6.0,
+        "corner_radius": 0.0,
+        "helix_angle": 45,
+        "coating": "TiAlN",
+        "material": "solid_carbide",
+        "application": ["roughing", "semi_finishing"],
+        "max_rpm": 15000,
+        "price_range": "low",
+        "manufacturer": "Generic",
+        "description": "Robust flat end mill for material removal"
+      },
+      {
+        "id": "EM-F-004",
+        "name": "EM_10mm_Flat_4Flute",
+        "type": "flat_end_mill",
+        "diameter": 10.0,
+        "flute_length": 25.0,
+        "overall_length": 75.0,
+        "flutes": 4,
+        "shank_diameter": 10.0,
+        "corner_radius": 0.0,
+        "helix_angle": 45,
+        "coating": "TiAlN",
+        "material": "solid_carbide",
+        "application": ["roughing", "heavy_material_removal"],
+        "max_rpm": 10000,
+        "price_range": "low",
+        "manufacturer": "Generic",
+        "description": "Heavy-duty flat end mill for roughing"
+      },
+      {
+        "id": "EM-F-005",
+        "name": "EM_16mm_Flat_4Flute",
+        "type": "flat_end_mill",
+        "diameter": 16.0,
+        "flute_length": 32.0,
+        "overall_length": 100.0,
+        "flutes": 4,
+        "shank_diameter": 16.0,
+        "corner_radius": 0.0,
+        "helix_angle": 45,
+        "coating": "AlTiN",
+        "material": "solid_carbide",
+        "application": ["roughing", "face_milling"],
+        "max_rpm": 8000,
+        "price_range": "medium",
+        "manufacturer": "Generic",
+        "description": "Large diameter flat end mill for face milling"
+      },
+      {
+        "id": "EM-F-006",
+        "name": "EM_20mm_Flat_6Flute",
+        "type": "flat_end_mill",
+        "diameter": 20.0,
+        "flute_length": 40.0,
+        "overall_length": 120.0,
+        "flutes": 6,
+        "shank_diameter": 20.0,
+        "corner_radius": 0.0,
+        "helix_angle": 45,
+        "coating": "AlTiN",
+        "material": "solid_carbide",
+        "application": ["roughing", "high_material_removal"],
+        "max_rpm": 6000,
+        "price_range": "high",
+        "manufacturer": "Generic",
+        "description": "High-performance flat end mill for maximum material removal"
+      }
+    ],
+    
+    "ball_end_mills": [
+      {
+        "id": "EM-B-001",
+        "name": "EM_1mm_Ball_2Flute",
+        "type": "ball_end_mill",
+        "diameter": 1.0,
+        "flute_length": 3.0,
+        "overall_length": 38.0,
+        "flutes": 2,
+        "shank_diameter": 3.0,
+        "corner_radius": 0.5,
+        "helix_angle": 30,
+        "coating": "TiN",
+        "material": "solid_carbide",
+        "application": ["finishing", "3d_contouring", "high_curvature"],
+        "max_rpm": 30000,
+        "price_range": "medium",
+        "manufacturer": "Generic",
+        "description": "Ultra-fine ball nose end mill for intricate 3D contours"
+      },
+      {
+        "id": "EM-B-002",
+        "name": "EM_3mm_Ball_2Flute",
+        "type": "ball_end_mill",
+        "diameter": 3.0,
+        "flute_length": 8.0,
+        "overall_length": 50.0,
+        "flutes": 2,
+        "shank_diameter": 6.0,
+        "corner_radius": 1.5,
+        "helix_angle": 30,
+        "coating": "TiAlN",
+        "material": "solid_carbide",
+        "application": ["finishing", "3d_contouring", "medium_curvature"],
+        "max_rpm": 20000,
+        "price_range": "low",
+        "manufacturer": "Generic",
+        "description": "General purpose ball nose end mill for 3D machining"
+      },
+      {
+        "id": "EM-B-003",
+        "name": "EM_6mm_Ball_2Flute",
+        "type": "ball_end_mill",
+        "diameter": 6.0,
+        "flute_length": 15.0,
+        "overall_length": 60.0,
+        "flutes": 2,
+        "shank_diameter": 6.0,
+        "corner_radius": 3.0,
+        "helix_angle": 30,
+        "coating": "TiAlN",
+        "material": "solid_carbide",
+        "application": ["semi_finishing", "3d_contouring"],
+        "max_rpm": 15000,
+        "price_range": "low",
+        "manufacturer": "Generic",
+        "description": "Medium ball nose end mill for 3D surfaces"
+      },
+      {
+        "id": "EM-B-004",
+        "name": "EM_10mm_Ball_2Flute",
+        "type": "ball_end_mill",
+        "diameter": 10.0,
+        "flute_length": 25.0,
+        "overall_length": 75.0,
+        "flutes": 2,
+        "shank_diameter": 10.0,
+        "corner_radius": 5.0,
+        "helix_angle": 30,
+        "coating": "TiAlN",
+        "material": "solid_carbide",
+        "application": ["semi_finishing", "large_3d_contouring"],
+        "max_rpm": 10000,
+        "price_range": "low",
+        "manufacturer": "Generic",
+        "description": "Large ball nose end mill for big 3D surfaces"
+      },
+      {
+        "id": "EM-B-005",
+        "name": "EM_12mm_Ball_4Flute",
+        "type": "ball_end_mill",
+        "diameter": 12.0,
+        "flute_length": 30.0,
+        "overall_length": 90.0,
+        "flutes": 4,
+        "shank_diameter": 12.0,
+        "corner_radius": 6.0,
+        "helix_angle": 45,
+        "coating": "AlTiN",
+        "material": "solid_carbide",
+        "application": ["finishing", "high_speed_machining"],
+        "max_rpm": 12000,
+        "price_range": "medium",
+        "manufacturer": "Generic",
+        "description": "High-performance ball nose for finishing operations"
+      }
+    ],
+    
+    "corner_radius_end_mills": [
+      {
+        "id": "EM-R-001",
+        "name": "EM_6mm_0.5mmRad_4Flute",
+        "type": "corner_radius_end_mill",
+        "diameter": 6.0,
+        "flute_length": 15.0,
+        "overall_length": 60.0,
+        "flutes": 4,
+        "shank_diameter": 6.0,
+        "corner_radius": 0.5,
+        "helix_angle": 45,
+        "coating": "TiAlN",
+        "material": "solid_carbide",
+        "application": ["semi_finishing", "pocketing"],
+        "max_rpm": 15000,
+        "price_range": "low",
+        "manufacturer": "Generic",
+        "description": "Corner radius end mill for improved tool life"
+      },
+      {
+        "id": "EM-R-002",
+        "name": "EM_10mm_1mmRad_4Flute",
+        "type": "corner_radius_end_mill",
+        "diameter": 10.0,
+        "flute_length": 25.0,
+        "overall_length": 75.0,
+        "flutes": 4,
+        "shank_diameter": 10.0,
+        "corner_radius": 1.0,
+        "helix_angle": 45,
+        "coating": "TiAlN",
+        "material": "solid_carbide",
+        "application": ["roughing", "semi_finishing"],
+        "max_rpm": 10000,
+        "price_range": "low",
+        "manufacturer": "Generic",
+        "description": "Robust corner radius end mill for heavy cutting"
+      },
+      {
+        "id": "EM-R-003",
+        "name": "EM_16mm_2mmRad_6Flute",
+        "type": "corner_radius_end_mill",
+        "diameter": 16.0,
+        "flute_length": 32.0,
+        "overall_length": 100.0,
+        "flutes": 6,
+        "shank_diameter": 16.0,
+        "corner_radius": 2.0,
+        "helix_angle": 45,
+        "coating": "AlTiN",
+        "material": "solid_carbide",
+        "application": ["high_speed_machining", "finishing"],
+        "max_rpm": 8000,
+        "price_range": "medium",
+        "manufacturer": "Generic",
+        "description": "High-performance corner radius end mill"
+      }
+    ],
+    
+    "roughing_end_mills": [
+      {
+        "id": "EM-RGH-001",
+        "name": "EM_10mm_Roughing_5Flute",
+        "type": "roughing_end_mill",
+        "diameter": 10.0,
+        "flute_length": 25.0,
+        "overall_length": 75.0,
+        "flutes": 5,
+        "shank_diameter": 10.0,
+        "corner_radius": 0.5,
+        "helix_angle": 35,
+        "coating": "TiAlN",
+        "material": "solid_carbide",
+        "application": ["roughing", "high_material_removal"],
+        "max_rpm": 10000,
+        "price_range": "medium",
+        "manufacturer": "Generic",
+        "description": "Roughing end mill with serrated teeth for chip breaking"
+      },
+      {
+        "id": "EM-RGH-002",
+        "name": "EM_16mm_Roughing_6Flute",
+        "type": "roughing_end_mill",
+        "diameter": 16.0,
+        "flute_length": 32.0,
+        "overall_length": 100.0,
+        "flutes": 6,
+        "shank_diameter": 16.0,
+        "corner_radius": 1.0,
+        "helix_angle": 35,
+        "coating": "AlTiN",
+        "material": "solid_carbide",
+        "application": ["heavy_roughing", "high_material_removal"],
+        "max_rpm": 8000,
+        "price_range": "high",
+        "manufacturer": "Generic",
+        "description": "Heavy-duty roughing end mill for maximum material removal"
+      }
+    ]
+  },
+  
+  "face_mills": [
+    {
+      "id": "FM-001",
+      "name": "FM_50mm_45Deg_5Insert",
+      "type": "face_mill",
+      "diameter": 50.0,
+      "cutting_diameter": 50.0,
+      "overall_length": 120.0,
+      "shank_diameter": 32.0,
+      "lead_angle": 45,
+      "insert_count": 5,
+      "insert_type": "square",
+      "coating": "AlTiN",
+      "material": "carbide_body",
+      "application": ["face_milling", "roughing"],
+      "max_rpm": 5000,
+      "price_range": "high",
+      "manufacturer": "Generic",
+      "description": "45-degree face mill for efficient face milling"
+    },
+    {
+      "id": "FM-002",
+      "name": "FM_63mm_90Deg_8Insert",
+      "type": "face_mill",
+      "diameter": 63.0,
+      "cutting_diameter": 63.0,
+      "overall_length": 150.0,
+      "shank_diameter": 40.0,
+      "lead_angle": 90,
+      "insert_count": 8,
+      "insert_type": "square",
+      "coating": "AlTiN",
+      "material": "carbide_body",
+      "application": ["face_milling", "shoulder_milling"],
+      "max_rpm": 4000,
+      "price_range": "high",
+      "manufacturer": "Generic",
+      "description": "90-degree face mill for square shoulder milling"
+    },
+    {
+      "id": "FM-003",
+      "name": "FM_80mm_45Deg_10Insert",
+      "type": "face_mill",
+      "diameter": 80.0,
+      "cutting_diameter": 80.0,
+      "overall_length": 180.0,
+      "shank_diameter": 50.0,
+      "lead_angle": 45,
+      "insert_count": 10,
+      "insert_type": "octagon",
+      "coating": "AlTiN",
+      "material": "carbide_body",
+      "application": ["heavy_face_milling", "roughing"],
+      "max_rpm": 3000,
+      "price_range": "high",
+      "manufacturer": "Generic",
+      "description": "Large face mill for heavy-duty face milling operations"
+    }
+  ],
+  
+  "drills": [
+    {
+      "id": "DR-001",
+      "name": "DR_3mm_Jobber",
+      "type": "twist_drill",
+      "diameter": 3.0,
+      "flute_length": 30.0,
+      "overall_length": 65.0,
+      "point_angle": 118,
+      "coating": "TiN",
+      "material": "HSS",
+      "application": ["drilling", "through_holes"],
+      "max_rpm": 8000,
+      "price_range": "low",
+      "manufacturer": "Generic",
+      "description": "Standard jobber drill for general purpose drilling"
+    },
+    {
+      "id": "DR-002",
+      "name": "DR_5mm_Jobber",
+      "type": "twist_drill",
+      "diameter": 5.0,
+      "flute_length": 50.0,
+      "overall_length": 85.0,
+      "point_angle": 118,
+      "coating": "TiN",
+      "material": "HSS",
+      "application": ["drilling", "through_holes"],
+      "max_rpm": 6000,
+      "price_range": "low",
+      "manufacturer": "Generic",
+      "description": "Standard jobber drill for general purpose drilling"
+    },
+    {
+      "id": "DR-003",
+      "name": "DR_8mm_Jobber",
+      "type": "twist_drill",
+      "diameter": 8.0,
+      "flute_length": 75.0,
+      "overall_length": 120.0,
+      "point_angle": 118,
+      "coating": "TiN",
+      "material": "HSS",
+      "application": ["drilling", "through_holes"],
+      "max_rpm": 4000,
+      "price_range": "low",
+      "manufacturer": "Generic",
+      "description": "Standard jobber drill for general purpose drilling"
+    },
+    {
+      "id": "DR-004",
+      "name": "DR_10mm_Jobber",
+      "type": "twist_drill",
+      "diameter": 10.0,
+      "flute_length": 90.0,
+      "overall_length": 150.0,
+      "point_angle": 118,
+      "coating": "TiN",
+      "material": "HSS",
+      "application": ["drilling", "through_holes"],
+      "max_rpm": 3000,
+      "price_range": "low",
+      "manufacturer": "Generic",
+      "description": "Standard jobber drill for general purpose drilling"
+    },
+    {
+      "id": "DR-005",
+      "name": "DR_12mm_Carbide",
+      "type": "carbide_drill",
+      "diameter": 12.0,
+      "flute_length": 100.0,
+      "overall_length": 160.0,
+      "point_angle": 140,
+      "coating": "TiAlN",
+      "material": "solid_carbide",
+      "application": ["precision_drilling", "hard_materials"],
+      "max_rpm": 5000,
+      "price_range": "medium",
+      "manufacturer": "Generic",
+      "description": "Solid carbide drill for precision and hard materials"
+    }
+  ],
+  
+  "reamers": [
+    {
+      "id": "RM-001",
+      "name": "RM_5mm_Chucking",
+      "type": "chucking_reamer",
+      "diameter": 5.0,
+      "flute_length": 40.0,
+      "overall_length": 80.0,
+      "flutes": 6,
+      "coating": "TiN",
+      "material": "HSS",
+      "application": ["reaming", "precision_holes"],
+      "max_rpm": 2000,
+      "price_range": "low",
+      "manufacturer": "Generic",
+      "description": "Chucking reamer for precision hole finishing"
+    },
+    {
+      "id": "RM-002",
+      "name": "RM_10mm_Chucking",
+      "type": "chucking_reamer",
+      "diameter": 10.0,
+      "flute_length": 60.0,
+      "overall_length": 120.0,
+      "flutes": 8,
+      "coating": "TiN",
+      "material": "HSS",
+      "application": ["reaming", "precision_holes"],
+      "max_rpm": 1500,
+      "price_range": "low",
+      "manufacturer": "Generic",
+      "description": "Chucking reamer for precision hole finishing"
+    }
+  ],
+  
+  "taps": [
+    {
+      "id": "TP-001",
+      "name": "TP_M6_Spiral_Point",
+      "type": "tap",
+      "diameter": 6.0,
+      "thread_pitch": 1.0,
+      "overall_length": 65.0,
+      "tap_type": "spiral_point",
+      "coating": "TiN",
+      "material": "HSS",
+      "application": ["tapping", "through_holes"],
+      "max_rpm": 500,
+      "price_range": "low",
+      "manufacturer": "Generic",
+      "description": "Spiral point tap for through holes"
+    },
+    {
+      "id": "TP-002",
+      "name": "TP_M8_Spiral_Flute",
+      "type": "tap",
+      "diameter": 8.0,
+      "thread_pitch": 1.25,
+      "overall_length": 75.0,
+      "tap_type": "spiral_flute",
+      "coating": "TiN",
+      "material": "HSS",
+      "application": ["tapping", "blind_holes"],
+      "max_rpm": 400,
+      "price_range": "low",
+      "manufacturer": "Generic",
+      "description": "Spiral flute tap for blind holes"
+    }
+  ],
+  
+  "tool_selection_rules": {
+    "curvature_based_selection": {
+      "flat_regions": {
+        "primary_tools": ["face_mill", "flat_end_mill"],
+        "min_diameter": 10.0,
+        "preferred_flutes": [4, 6],
+        "strategy": "high_material_removal"
+      },
+      "high_curvature_concave": {
+        "primary_tools": ["ball_end_mill"],
+        "max_diameter": 3.0,
+        "constraint": "tool_diameter < feature_radius * 0.8",
+        "strategy": "high_precision_contouring"
+      },
+      "high_curvature_convex": {
+        "primary_tools": ["ball_end_mill", "corner_radius_end_mill"],
+        "max_diameter": 6.0,
+        "strategy": "adaptive_clearing"
+      },
+      "medium_curvature": {
+        "primary_tools": ["ball_end_mill", "corner_radius_end_mill"],
+        "diameter_range": [3.0, 10.0],
+        "strategy": "semi_finishing"
+      },
+      "low_curvature": {
+        "primary_tools": ["flat_end_mill", "corner_radius_end_mill"],
+        "diameter_range": [6.0, 20.0],
+        "strategy": "semi_finishing"
+      }
+    },
+    
+    "operation_based_selection": {
+      "roughing": {
+        "preferred_tools": ["roughing_end_mill", "flat_end_mill", "face_mill"],
+        "diameter_range": [10.0, 80.0],
+        "depth_of_cut": "aggressive",
+        "stepover": "high"
+      },
+      "semi_finishing": {
+        "preferred_tools": ["flat_end_mill", "corner_radius_end_mill"],
+        "diameter_range": [6.0, 16.0],
+        "depth_of_cut": "moderate",
+        "stepover": "medium"
+      },
+      "finishing": {
+        "preferred_tools": ["ball_end_mill", "flat_end_mill"],
+        "diameter_range": [1.0, 10.0],
+        "depth_of_cut": "light",
+        "stepover": "fine"
+      }
+    },
+    
+    "material_based_rules": {
+      "aluminum": {
+        "preferred_coatings": ["TiN", "uncoated"],
+        "helix_angle": "high",
+        "clearance_angle": "high",
+        "recommended_sfm_multiplier": 1.2
+      },
+      "steel": {
+        "preferred_coatings": ["TiAlN", "AlTiN"],
+        "helix_angle": "medium",
+        "clearance_angle": "medium",
+        "recommended_sfm_multiplier": 1.0
+      },
+      "stainless_steel": {
+        "preferred_coatings": ["TiAlN", "AlTiN"],
+        "helix_angle": "low",
+        "clearance_angle": "high",
+        "recommended_sfm_multiplier": 0.8
+      },
+      "titanium": {
+        "preferred_coatings": ["AlTiN", "TiAlN"],
+        "helix_angle": "low",
+        "clearance_angle": "high",
+        "recommended_sfm_multiplier": 0.6
+      },
+      "hardened_steel": {
+        "preferred_coatings": ["AlTiN", "diamond"],
+        "helix_angle": "low",
+        "clearance_angle": "high",
+        "recommended_sfm_multiplier": 0.4
+      }
+    }
+  },
+  
+  "tool_holders": {
+    "collet_chucks": [
+      {
+        "id": "TH-COL-001",
+        "name": "ER16_Collet_Chuck",
+        "type": "collet_chuck",
+        "collet_type": "ER16",
+        "max_grip_diameter": 10.0,
+        "balance_speed": 25000,
+        "application": "general_purpose"
+      },
+      {
+        "id": "TH-COL-002",
+        "name": "ER32_Collet_Chuck",
+        "type": "collet_chuck",
+        "collet_type": "ER32",
+        "max_grip_diameter": 20.0,
+        "balance_speed": 15000,
+        "application": "heavy_duty"
+      }
+    ],
+    "hydraulic_holders": [
+      {
+        "id": "TH-HYD-001",
+        "name": "Hydraulic_Holder_32mm",
+        "type": "hydraulic_holder",
+        "shank_diameter": 32.0,
+        "max_grip_diameter": 25.0,
+        "balance_speed": 30000,
+        "application": "high_precision"
+      }
+    ]
+  }
+}
